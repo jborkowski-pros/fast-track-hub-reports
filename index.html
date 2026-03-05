@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fast Track Hub - Questions Summary</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f9; color: #2d3748; padding: 40px 20px; }
+    .container { max-width: 960px; margin: 0 auto; }
+    header { background: linear-gradient(135deg, #2b6cb0, #4299e1); color: white; border-radius: 12px; padding: 32px 36px; margin-bottom: 32px; }
+    header h1 { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+    header p { font-size: 14px; opacity: 0.88; }
+    .meta { display: flex; gap: 24px; margin-top: 20px; flex-wrap: wrap; }
+    .meta-box { background: rgba(255,255,255,0.18); border-radius: 8px; padding: 12px 20px; text-align: center; }
+    .meta-box .value { font-size: 32px; font-weight: 800; }
+    .meta-box .label { font-size: 12px; opacity: 0.85; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .card { background: white; border-radius: 12px; padding: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .card h2 { font-size: 15px; font-weight: 700; color: #2b6cb0; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .chart-wrap { position: relative; height: 320px; display: flex; align-items: center; justify-content: center; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    thead th { background: #ebf4ff; color: #2b6cb0; font-weight: 700; padding: 10px 14px; text-align: left; font-size: 12px; text-transform: uppercase; }
+    tbody tr { border-bottom: 1px solid #edf2f7; }
+    tbody td { padding: 11px 14px; vertical-align: middle; }
+    .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; vertical-align: middle; }
+    .cat-cell { display: flex; align-items: center; }
+    .bar-wrap { display: flex; align-items: center; gap: 8px; }
+    .bar-bg { background: #edf2f7; border-radius: 999px; height: 8px; flex: 1; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 999px; }
+    .count-badge { background: #ebf4ff; color: #2b6cb0; font-weight: 700; border-radius: 999px; padding: 2px 10px; font-size: 13px; }
+    .footer { text-align: center; font-size: 12px; color: #a0aec0; margin-top: 16px; }
+    .full-card { grid-column: 1 / -1; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>#fast-track-hub_questions - Summary Report</h1>
+    <p>Channel: Slack - Period: 19 Feb 2026 - 05 Mar 2026 - Generated: 05 Mar 2026</p>
+    <div class="meta">
+      <div class="meta-box"><div class="value">50</div><div class="label">Total Questions</div></div>
+      <div class="meta-box"><div class="value">7</div><div class="label">Categories</div></div>
+      <div class="meta-box"><div class="value">15</div><div class="label">Days Active</div></div>
+      <div class="meta-box"><div class="value">~3.3</div><div class="label">Questions / Day</div></div>
+    </div>
+  </header>
+  <div class="grid">
+    <div class="card"><h2>Distribution by Category</h2><div class="chart-wrap"><canvas id="pieChart"></canvas></div></div>
+    <div class="card"><h2>Questions per Category</h2><div class="chart-wrap"><canvas id="barChart"></canvas></div></div>
+    <div class="card full-card">
+      <h2>Category Breakdown</h2>
+      <table><thead><tr><th>Category</th><th>Questions</th><th>Share</th><th></th></tr></thead><tbody id="tableBody"></tbody></table>
+    </div>
+  </div>
+  <div class="footer">Data source: #fast-track-hub_questions - Prosoma Slack Workspace</div>
+</div>
+<script>
+  const data=[{label:"Nutrition & Weight Management",count:12,pct:24.0},{label:"Emotions, Anxiety & Sleep",count:10,pct:20.0},{label:"Custom / Open Question",count:10,pct:20.0},{label:"Don't Know Where to Start",count:6,pct:12.0},{label:"Benefits, Rehab & Insurance",count:5,pct:10.0},{label:"Side Effects",count:5,pct:10.0},{label:"Fatigue & Daily Exhaustion",count:2,pct:4.0}];
+  const colors=["#4299e1","#48bb78","#ed8936","#9f7aea","#f56565","#38b2ac","#ecc94b"];
+  new Chart(document.getElementById('pieChart'),{type:'doughnut',data:{labels:data.map(d=>d.label),datasets:[{data:data.map(d=>d.count),backgroundColor:colors,borderWidth:2,borderColor:'#fff',hoverOffset:6}]},options:{cutout:'58%',plugins:{legend:{display:false}}}});
+  new Chart(document.getElementById('barChart'),{type:'bar',data:{labels:data.map(d=>d.label.length>22?d.label.substring(0,22)+'...':d.label),datasets:[{data:data.map(d=>d.count),backgroundColor:colors,borderRadius:6,borderSkipped:false}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{color:'#edf2f7'}},y:{grid:{display:false}}}}});
+  const tbody=document.getElementById('tableBody');
+  data.forEach((d,i)=>{const tr=document.createElement('tr');tr.innerHTML='<td><div class="cat-cell"><span class="dot" style="background:'+colors[i]+'"></span>'+d.label+'</div></td><td><span class="count-badge">'+d.count+'</span></td><td><strong>'+d.pct.toFixed(1)+'%</strong></td><td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill" style="width:'+d.pct+'%;background:'+colors[i]+'"></div></div></div></td>';tbody.appendChild(tr);});
+</script>
+</body>
+</html>
