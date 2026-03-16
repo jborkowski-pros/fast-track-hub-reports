@@ -40,12 +40,12 @@
 <div class="container">
   <header>
     <h1>#fast-track-hub_questions - Summary Report</h1>
-    <p>Channel: Slack - Period: 19 Feb 2026 - 09 Mar 2026 - Generated: 09 Mar 2026</p>
+    <p>Channel: Slack - Period: 19 Feb 2026 - 15 Mar 2026 - Generated: 16 Mar 2026</p>
     <div class="meta">
-      <div class="meta-box"><div class="value">62</div><div class="label">Total Questions</div></div>
+      <div class="meta-box"><div class="value">101</div><div class="label">Total Questions</div></div>
       <div class="meta-box"><div class="value">7</div><div class="label">Categories</div></div>
-      <div class="meta-box"><div class="value">18</div><div class="label">Days Active</div></div>
-      <div class="meta-box"><div class="value">~3.4</div><div class="label">Questions / Day</div></div>
+      <div class="meta-box"><div class="value">24</div><div class="label">Days Active</div></div>
+      <div class="meta-box"><div class="value">~4.2</div><div class="label">Questions / Day</div></div>
     </div>
   </header>
   <div class="grid">
@@ -59,7 +59,7 @@
   <div class="footer">Data source: #fast-track-hub_questions - Prosoma Slack Workspace</div>
 </div>
 <script>
-  const data=[{"label":"Nutrition & Weight Management","count":14,"pct":22.6},{"label":"Custom / Open Question","count":13,"pct":21.0},{"label":"Emotions, Anxiety & Sleep","count":12,"pct":19.4},{"label":"Don\'t Know Where to Start","count":8,"pct":12.9},{"label":"Benefits, Rehab & Insurance","count":7,"pct":11.3},{"label":"Side Effects","count":5,"pct":8.1},{"label":"Fatigue & Daily Exhaustion","count":3,"pct":4.8}];
+  const data=[{"label":"Emotions, Anxiety & Sleep","count":20,"pct":19.8},{"label":"Nutrition & Weight Management","count":20,"pct":19.8},{"label":"Custom / Open Question","count":20,"pct":19.8},{"label":"Don\'t Know Where to Start","count":15,"pct":14.9},{"label":"Benefits, Rehab & Insurance","count":12,"pct":11.9},{"label":"Side Effects","count":8,"pct":7.9},{"label":"Fatigue & Daily Exhaustion","count":6,"pct":5.9}];
   const colors=["#4299e1", "#48bb78", "#ed8936", "#9f7aea", "#f56565", "#38b2ac", "#ecc94b"];
   new Chart(document.getElementById('pieChart'),{type:'doughnut',data:{labels:data.map(d=>d.label),datasets:[{data:data.map(d=>d.count),backgroundColor:colors,borderWidth:2,borderColor:'#fff',hoverOffset:6}]},options:{cutout:'58%',plugins:{legend:{display:false}}}});
   new Chart(document.getElementById('barChart'),{type:'bar',data:{labels:data.map(d=>d.label.length>22?d.label.substring(0,22)+'...':d.label),datasets:[{data:data.map(d=>d.count),backgroundColor:colors,borderRadius:6,borderSkipped:false}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{color:'#edf2f7'}},y:{grid:{display:false}}}}});
