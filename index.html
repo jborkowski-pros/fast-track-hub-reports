@@ -40,12 +40,12 @@
 <div class="container">
   <header>
     <h1>#fast-track-hub_questions - Summary Report</h1>
-    <p>Channel: Slack - Period: 19 Feb 2026 - 12 Apr 2026 - Generated: 13 Apr 2026</p>
+    <p>Channel: Slack - Period: 19 Feb 2026 - 20 Apr 2026 - Generated: 20 Apr 2026</p>
     <div class="meta">
-      <div class="meta-box"><div class="value">228</div><div class="label">Total Questions</div></div>
+      <div class="meta-box"><div class="value">245</div><div class="label">Total Questions</div></div>
       <div class="meta-box"><div class="value">8</div><div class="label">Categories</div></div>
-      <div class="meta-box"><div class="value">53</div><div class="label">Days Active</div></div>
-      <div class="meta-box"><div class="value">~4.3</div><div class="label">Questions / Day</div></div>
+      <div class="meta-box"><div class="value">60</div><div class="label">Days Active</div></div>
+      <div class="meta-box"><div class="value">~4.1</div><div class="label">Questions / Day</div></div>
     </div>
   </header>
   <div class="grid">
@@ -59,7 +59,7 @@
   <div class="footer">Data source: #fast-track-hub_questions - Prosoma Slack Workspace</div>
 </div>
 <script>
-  const data=[{"label":"Nutrition & Weight Management","count":52,"pct":22.8},{"label":"Emotions, Anxiety & Sleep","count":45,"pct":19.7},{"label":"Custom / Open Question","count":35,"pct":15.4},{"label":"Benefits, Rehab & Insurance","count":33,"pct":14.5},{"label":"Don\'t Know Where to Start","count":23,"pct":10.1},{"label":"Fatigue & Daily Exhaustion","count":20,"pct":8.8},{"label":"Side Effects","count":18,"pct":7.9},{"label":"Other","count":2,"pct":0.9}];
+  const data=[{"label":"Nutrition & Weight Management","count":54,"pct":22.0},{"label":"Emotions, Anxiety & Sleep","count":47,"pct":19.2},{"label":"Custom / Open Question","count":39,"pct":15.9},{"label":"Benefits, Rehab & Insurance","count":38,"pct":15.5},{"label":"Don\'t Know Where to Start","count":24,"pct":9.8},{"label":"Fatigue & Daily Exhaustion","count":23,"pct":9.4},{"label":"Side Effects","count":18,"pct":7.3},{"label":"Other","count":2,"pct":0.8}];
   const colors=["#4299e1", "#48bb78", "#ed8936", "#9f7aea", "#f56565", "#38b2ac", "#ecc94b", "#dd6b20"];
   new Chart(document.getElementById('pieChart'),{type:'doughnut',data:{labels:data.map(d=>d.label),datasets:[{data:data.map(d=>d.count),backgroundColor:colors,borderWidth:2,borderColor:'#fff',hoverOffset:6}]},options:{cutout:'58%',plugins:{legend:{display:false}}}});
   new Chart(document.getElementById('barChart'),{type:'bar',data:{labels:data.map(d=>d.label.length>22?d.label.substring(0,22)+'...':d.label),datasets:[{data:data.map(d=>d.count),backgroundColor:colors,borderRadius:6,borderSkipped:false}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{color:'#edf2f7'}},y:{grid:{display:false}}}}});
